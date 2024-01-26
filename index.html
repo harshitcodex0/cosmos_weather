@@ -3,18 +3,28 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>My Weather</title>
+    <title>COSCO Weather</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="stylesheet" href="images/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <script
+      src="https://kit.fontawesome.com/445af92494.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-dark fixed-top navbar-expand-lg mt-2 bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">My Weather</a>
+        <a class="navbar-brand fw-bold" href="#home"
+          >COSMOS <small class="fs-6 fw-light">weather</small></a
+        >
         <button
           class="navbar-toggler"
           type="button"
@@ -26,30 +36,17 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarSupportedContent"
+          data-bs-theme="dark"
+        >
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link" aria-current="page" href="#home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                Usage Guide
-              </a>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Delhi</a></li>
-                <li><a class="dropdown-item" href="#">Seattle</a></li>
-
-                <li><a class="dropdown-item" href="#">Banglore</a></li>
-              </ul>
+              <a class="nav-link" href="#about">About</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -60,7 +57,7 @@
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success" type="submit" id="submit">
+            <button class="btn btn-primary" type="submit" id="submit">
               Search
             </button>
           </form>
@@ -68,36 +65,38 @@
       </div>
     </nav>
 
-    <div class="container">
-      <h1 class="text-center my-3 fw-bold">Weather for <span id="cityName"></span></h1>
+    <div class="container mt-5 pt-3" id="home">
+      <h1 class="text-center my-3 fw-bold">
+        Weather for <span id="cityName"></span>
+      </h1>
       <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
         <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary border-3">
             <div class="card-header py-3 text-bg-primary border-primary">
               <h4 class="my-0 fw-normal">Temperature Info</h4>
             </div>
             <div class="card-body">
               <h1 class="card-title pricing-card-title">
-                <span id="temp"></span><small class="text-body-secondary fw-light"> ℃</small>
+                <span id="temp"></span
+                ><small class="text-body-secondary fw-light"> ℃</small>
               </h1>
               <ul class="list-unstyled mt-3 mb-4">
                 <!-- <li>Temperature : <span id="temp"></span> ℃</li> -->
                 <li>Min Temp : <span id="min_temp"></span> ℃</li>
                 <li>Max Temp : <span id="max_temp"></span> ℃</li>
-                
               </ul>
-              
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary border-3">
             <div class="card-header py-3 text-bg-primary border-primary">
               <h4 class="my-0 fw-normal">Humidity Info</h4>
             </div>
             <div class="card-body">
               <h1 class="card-title pricing-card-title">
-                <span id="humidity"></span><small class="text-body-secondary fw-light">%</small>
+                <span id="humidity"></span
+                ><small class="text-body-secondary fw-light">%</small>
               </h1>
               <ul class="list-unstyled mt-3 mb-4">
                 <!-- <li>Cloud PCT : <span id="cloud_pct"></span></li> -->
@@ -105,112 +104,123 @@
                 <li>Feels Like : <span id="feels_like"></span> ℃</li>
                 <!-- <li>Humidity : <span id="humidity"></span> %</li> -->
               </ul>
-              
             </div>
           </div>
         </div>
         <div class="col">
-          <div class="card mb-4 rounded-3 shadow-sm border-primary">
+          <div class="card mb-4 rounded-3 shadow-sm border-primary border-3">
             <div class="card-header py-3 text-bg-primary border-primary">
               <h4 class="my-0 fw-normal">Wind Speed Info</h4>
             </div>
             <div class="card-body">
               <h1 class="card-title pricing-card-title">
-                <span id="wind_speed"></span><small class="text-body-secondary fw-light">m/s</small>
+                <span id="wind_speed"></span
+                ><small class="text-body-secondary fw-light">m/s</small>
               </h1>
               <ul class="list-unstyled mt-3 mb-4">
                 <!-- <li>Wind Speed : <span id="wind_speed"></span> Kmph</li> -->
-                
+
                 <li>Sunrise : <span id="sunrise"></span></li>
                 <li>Sunset : <span id="sunset"></span></li>
               </ul>
-              
             </div>
           </div>
         </div>
       </div>
-
-      <h2 class="display-6 text-center mb-4 fw-semibold">
-        Weather of Common Places
-      </h2>
-
-      <div class="table-responsive">
-        <table class="table text-center">
-          <thead>
-            <tr>
-              <th style="width: 34%"></th>
-              <th style="width: 22%">Cloud Pct</th>
-              <th style="width: 22%">Temp</th>
-              <th style="width: 22%">Feelslike</th>
-              <th style="width: 22%">Humidity</th>
-              <th style="width: 22%">Min_Temp</th>
-              <th style="width: 22%">Max_Temp</th>
-              <th style="width: 22%">Wind_Speed</th>
-              <th style="width: 22%">Wind_Degrees</th>
-              <th style="width: 22%">Sunrise</th>
-              <th style="width: 22%">Sunset</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row" class="text-start">Shanghai</th>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
-              <td>11</td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-start">Mumbai</th>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
-              <td>11</td>
-            </tr>
-          </tbody>
-
-          <tbody>
-            <tr>
-              <th scope="row" class="text-start">Seoul</th>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
-              <td>11</td>
-            </tr>
-            <tr>
-              <th scope="row" class="text-start">Tokyo</th>
-              <td>1</td>
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-              <td>9</td>
-              <td>11</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
     </div>
+
+    <div id="about" class="text-center bg-body-tertiary rounded-3 mb-5 py-5">
+      <img
+        class="mb-5 mt-5"
+        src="/images/weather-app.png"
+        width="80"
+        height="80"
+        alt="COSMOS weather"
+      />
+
+      <h1 class="text-body-emphasis fw-bold">
+        COSMOS <small class="fw-normal">Weather</small>
+      </h1>
+      <p class="col-lg-8 mx-auto fs-5 text-muted">
+        Welcome to our weather app, where simplicity meets functionality. We
+        strive to provide you with accurate and up-to-date weather information
+        in a user-friendly interface. Stay informed about the forecast
+        effortlessly as you navigate through the intuitive design. Enjoy the
+        weather, beautifully presented.
+      </p>
+    </div>
+
+    <footer
+      class="d-flex flex-wrap justify-content-between align-items-center py-3 bg-body-tertiary"
+    >
+      <div class="col-md-4 d-flex align-items-center">
+        <a
+          href="/"
+          class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1"
+        >
+          <svg class="bi" width="30" height="24">
+            <use xlink:href="#bootstrap"></use>
+          </svg>
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary"
+          >© 2023 COSMOS Company, Inc</span
+        >
+      </div>
+
+      <ul class="nav col-md-4 justify-content-end list-unstyled d-flex mx-5">
+        <li class="ms-3">
+          <a
+            class="text-body-secondary"
+            href="https://twitter.com/HarshSi82158470"
+            ><svg
+              class="bi"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 512 512"
+            >
+              <path
+                d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+              /></svg
+          ></a>
+        </li>
+        <li class="ms-3">
+          <a
+            class="text-body-secondary"
+            href="https://www.instagram.com/harshit13c/"
+            alt="instagram"
+            ><svg
+              class="bi"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 448 512"
+            >
+              <path
+                d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+              /></svg
+          ></a>
+        </li>
+        <li class="ms-3">
+          <a
+            class="text-body-secondary"
+            href="https://github.com/harshitcodex0"
+          >
+            <svg
+              class="bi"
+              width="24"
+              height="24"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 496 512"
+            >
+              <path
+                d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3 .3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5 .3-6.2 2.3zm44.2-1.7c-2.9 .7-4.9 2.6-4.6 4.9 .3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3 .7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3 .3 2.9 2.3 3.9 1.6 1 3.6 .7 4.3-.7 .7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3 .7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3 .7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+              /></svg
+          ></a>
+        </li>
+      </ul>
+    </footer>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
